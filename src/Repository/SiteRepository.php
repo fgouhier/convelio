@@ -11,7 +11,7 @@ class SiteRepository implements Repository
      *
      * @return Site
      */
-    public function getById(int $id): Site
+    public function getById($id)
     {
         // DO NOT MODIFY THIS METHOD
         $generator = Factory::create();

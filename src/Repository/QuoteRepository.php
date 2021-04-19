@@ -11,7 +11,7 @@ class QuoteRepository implements Repository
      *
      * @throws Exception
      */
-    public function getById(int $id): Quote
+    public function getById($id)
     {
         // DO NOT MODIFY THIS METHOD
         $generator = Faker\Factory::create();

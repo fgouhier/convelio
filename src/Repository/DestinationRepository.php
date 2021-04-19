@@ -11,7 +11,7 @@ class DestinationRepository implements Repository
      *
      * @return Destination
      */
-    public function getById(int $id): Destination
+    public function getById($id)
     {
         // DO NOT MODIFY THIS METHOD
         $generator = Factory::create();
