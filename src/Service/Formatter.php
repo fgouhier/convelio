@@ -1,12 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: floriangouhier
- * Date: 2021-04-19
- * Time: 23:19
- */
 
 class Formatter
 {
+    public static function renderHtml(Quote $quote)
+    {
+        return '<p>' . $quote->id . '</p>';
+    }
 
+    public static function renderText(Quote $quote)
+    {
+        return (string) $quote->id;
+    }
 }
