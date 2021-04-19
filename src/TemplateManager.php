@@ -34,23 +34,15 @@ class TemplateManager
     {
         $APPLICATION_CONTEXT = ApplicationContext::getInstance();
 
-        $this->quote = (!empty($data['quote']) and $data['quote'] instanceof Quote) ? $data['quote'] : null;
+        $this->quote = (!empty($data['quote']) && $data['quote'] instanceof Quote) ? $data['quote'] : null;
 
         if ($this->quote !== null) {
-
             $this->computeDestinationText($text);
-
             $this->computeSummariesText($text);
 
-
-
-            /*
-             * USER
-             * [user:*]
-             */
-            $_user = (isset($data['user']) and ($data['user'] instanceof User)) ? $data['user'] : $APPLICATION_CONTEXT->getCurrentUser();
-            if ($_user) {
-                (strpos($text, '[user:first_name]') !== false) and $text = str_replace('[user:first_name]', ucfirst(mb_strtolower($_user->firstname)), $text);
+            $user = (isset($data['user']) && ($data['user'] instanceof User)) ? $data['user'] : $APPLICATION_CONTEXT->getCurrentUser();
+            if (!empty($user)) {
+                $this->computeUserText($text, $user);
             }
         }
 
@@ -125,5 +117,14 @@ class TemplateManager
                 );
             }
         }
+    }
+
+    /**
+     * @param string $text
+     * @param User $user
+     */
+    private function computeUserText(&$text, $user)
+    {
+        $text = str_replace('[user:first_name]', ucfirst(mb_strtolower($user->firstname)), $text);
     }
 }
