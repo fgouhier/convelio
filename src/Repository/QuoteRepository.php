@@ -8,8 +8,10 @@ class QuoteRepository implements Repository
      * @param int $id
      *
      * @return Quote
+     *
+     * @throws Exception
      */
-    public function getById($id)
+    public function getById(int $id): Quote
     {
         // DO NOT MODIFY THIS METHOD
         $generator = Faker\Factory::create();
